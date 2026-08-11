@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+  <sp_widget action="INSERT_OR_UPDATE">
+    <sys_id>10e332a44c404a8ebeaf4fe4c74370b3</sys_id>
+    <sys_scope display_value="x_1643968_bell_f_0">2ac1f9cb932acf108b5df14fdd03d6e0</sys_scope>
+    <sys_update_name>sp_widget_10e332a44c404a8ebeaf4fe4c74370b3</sys_update_name>
+    <category>custom</category>
+    <client_script><![CDATA[api.controller = function() {
+  var c = this;
+};
+]]></client_script>
+    <controller_as>c</controller_as>
+    <css><![CDATA[.sp-hero {
+  background: linear-gradient(135deg, lighten($brand-primary, 30%) 0%, lighten($brand-primary, 15%) 50%, $brand-primary 100%);
+  border-radius: $border-radius-large;
+  overflow: hidden;
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba($btn-primary-color, 0.15);
+    pointer-events: none;
+  }
+}
+.sp-hero-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 48px 48px;
+  position: relative;
+  z-index: 1;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.sp-hero-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: $btn-primary-color;
+  margin: 0 0 8px;
+  line-height: 1.2;
+}
+.sp-hero-subtitle {
+  font-size: $font-size-base;
+  color: $btn-primary-color;
+  opacity: 0.85;
+  margin: 0;
+  max-width: 560px;
+}
+.sp-hero-btn {
+  background: rgba($btn-primary-color, 0.85);
+  color: $brand-primary;
+  border: none;
+  border-radius: $border-radius-base;
+  height: 44px;
+  padding: 0 20px;
+  font-size: $font-size-base;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  backdrop-filter: blur(4px);
+  transition: background 0.15s;
+  &:hover {
+    background: $btn-primary-color;
+  }
+}
+]]></css>
+    <data_table>sp_instance</data_table>
+    <demo_data/>
+    <description/>
+    <docs/>
+    <field_list/>
+    <has_preview>false</has_preview>
+    <id>bf_welcome</id>
+    <internal>false</internal>
+    <link>function link(scope, element, attrs, controller) {
+}</link>
+    <name>Bell Flash Welcome</name>
+    <option_schema/>
+    <public>false</public>
+    <roles/>
+    <script><![CDATA[(function() {
+  data.firstName = '';
+  data.greeting = '';
+
+  try {
+    var userId = gs.getUserID();
+    var userGr = new GlideRecord('sys_user');
+    userGr.setLimit(1);
+    if (userGr.get(userId)) {
+      data.firstName = userGr.getValue('first_name') + '';
+    }
+    if (!data.firstName) {
+      data.firstName = 'User';
+    }
+    data.greeting = 'Hi ' + data.firstName + ', Welcome to Flash';
+  } catch (e) {
+    gs.error('bf_welcome widget error: ' + e.message);
+    data.firstName = 'User';
+    data.greeting = 'Hi User, Welcome to Flash';
+  }
+})();
+]]></script>
+    <servicenow>false</servicenow>
+    <template><![CDATA[<div class="sp-hero">
+  <div class="sp-hero-inner">
+    <div class="sp-hero-text">
+      <h1 class="sp-hero-title">{{c.data.greeting}}</h1>
+      <p class="sp-hero-subtitle">Bell Canada's enterprise flash notification management system. Create, manage, and send flash notifications to keep your teams informed.</p>
+    </div>
+    <div class="sp-hero-actions">
+      <button type="button" class="btn sp-hero-btn" ng-click="c.goToFlash()">
+        <span class="glyphicon glyphicon-flash"></span>
+        Create Flash
+      </button>
+    </div>
+  </div>
+</div>
+]]></template>
+  </sp_widget>
+</record_update>

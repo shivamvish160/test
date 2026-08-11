@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_row">
+  <sp_row action="INSERT_OR_UPDATE">
+    <sys_id>8c4319efabaf4fa1a2f95eea29a0fca3</sys_id>
+    <sys_scope display_value="x_1643968_bell_f_0">2ac1f9cb932acf108b5df14fdd03d6e0</sys_scope>
+    <sys_update_name>sp_row_8c4319efabaf4fa1a2f95eea29a0fca3</sys_update_name>
+    <class_name/>
+    <order>1</order>
+    <semantic_tag/>
+    <sp_column/>
+    <sp_container>921eee8588044d7e96c70740d6abf0bb</sp_container>
+  </sp_row>
+</record_update>

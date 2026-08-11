@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_row">
+  <sp_row action="INSERT_OR_UPDATE">
+    <sys_id>dba35c1be5c24edc8bffc436e1d49b33</sys_id>
+    <sys_scope display_value="x_1643968_bell_f_0">2ac1f9cb932acf108b5df14fdd03d6e0</sys_scope>
+    <sys_update_name>sp_row_dba35c1be5c24edc8bffc436e1d49b33</sys_update_name>
+    <class_name>sp-card-grid</class_name>
+    <order>1</order>
+    <semantic_tag/>
+    <sp_column/>
+    <sp_container>efc6d016655a424e8d3a7492a7acc594</sp_container>
+  </sp_row>
+</record_update>

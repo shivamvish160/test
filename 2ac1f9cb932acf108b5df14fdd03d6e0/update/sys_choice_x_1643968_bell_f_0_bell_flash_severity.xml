@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+  <sys_choice_set action="INSERT_OR_UPDATE" field="severity" table="x_1643968_bell_f_0_bell_flash" version="3">
+    <sys_choice_set action="INSERT_OR_UPDATE">
+      <sys_id>4d2750b88478492a9f826453e2b53484</sys_id>
+      <element>severity</element>
+      <name>x_1643968_bell_f_0_bell_flash</name>
+      <sys_class_name>sys_choice_set</sys_class_name>
+      <sys_scope display_value="x_1643968_bell_f_0">2ac1f9cb932acf108b5df14fdd03d6e0</sys_scope>
+      <sys_package display_value="x_1643968_bell_f_0" source="2ac1f9cb932acf108b5df14fdd03d6e0">2ac1f9cb932acf108b5df14fdd03d6e0</sys_package>
+      <sys_update_name>sys_choice_x_1643968_bell_f_0_bell_flash_severity</sys_update_name>
+      <sys_name>severity</sys_name>
+    </sys_choice_set>
+    <sys_choice action="INSERT_OR_UPDATE">
+      <sys_id>0553ff82f8594d849af6344a7a55d1d3</sys_id>
+      <name>x_1643968_bell_f_0_bell_flash</name>
+      <element>severity</element>
+      <label>Critical</label>
+      <value>critical</value>
+      <sequence>1</sequence>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE">
+      <sys_id>4d065fa91c4a4d59b25b7ae1db3c217a</sys_id>
+      <name>x_1643968_bell_f_0_bell_flash</name>
+      <element>severity</element>
+      <label>High</label>
+      <value>high</value>
+      <sequence>2</sequence>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE">
+      <sys_id>88d50fd70b3b4b208cb52ec888ebcde6</sys_id>
+      <name>x_1643968_bell_f_0_bell_flash</name>
+      <element>severity</element>
+      <label>Medium</label>
+      <value>medium</value>
+      <sequence>3</sequence>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE">
+      <sys_id>8cbd9fa56b0b47b1899e6318ee5f3dc2</sys_id>
+      <name>x_1643968_bell_f_0_bell_flash</name>
+      <element>severity</element>
+      <label>Low</label>
+      <value>low</value>
+      <sequence>4</sequence>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE">
+      <sys_id>00ef55b22a33420ea5d91cde2dc7ba86</sys_id>
+      <name>x_1643968_bell_f_0_bell_flash</name>
+      <element>severity</element>
+      <label>Informational</label>
+      <value>informational</value>
+      <sequence>5</sequence>
+      <language>en</language>
+    </sys_choice>
+  </sys_choice_set>
+</record_update>

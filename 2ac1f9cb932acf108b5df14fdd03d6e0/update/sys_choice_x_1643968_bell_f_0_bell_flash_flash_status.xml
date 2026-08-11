@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+  <sys_choice_set action="INSERT_OR_UPDATE" field="flash_status" table="x_1643968_bell_f_0_bell_flash" version="3">
+    <sys_choice_set action="INSERT_OR_UPDATE">
+      <sys_id>ffdf0b9047384ff7ae2827ba711ee518</sys_id>
+      <element>flash_status</element>
+      <name>x_1643968_bell_f_0_bell_flash</name>
+      <sys_class_name>sys_choice_set</sys_class_name>
+      <sys_scope display_value="x_1643968_bell_f_0">2ac1f9cb932acf108b5df14fdd03d6e0</sys_scope>
+      <sys_package display_value="x_1643968_bell_f_0" source="2ac1f9cb932acf108b5df14fdd03d6e0">2ac1f9cb932acf108b5df14fdd03d6e0</sys_package>
+      <sys_update_name>sys_choice_x_1643968_bell_f_0_bell_flash_flash_status</sys_update_name>
+      <sys_name>flash_status</sys_name>
+    </sys_choice_set>
+    <sys_choice action="INSERT_OR_UPDATE">
+      <sys_id>9aa14f9d1a004123a60b105a7a44bd36</sys_id>
+      <name>x_1643968_bell_f_0_bell_flash</name>
+      <element>flash_status</element>
+      <label>Draft</label>
+      <value>draft</value>
+      <sequence>1</sequence>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE">
+      <sys_id>725c17f35d1a4f228e257034c86fd28e</sys_id>
+      <name>x_1643968_bell_f_0_bell_flash</name>
+      <element>flash_status</element>
+      <label>Pending</label>
+      <value>pending</value>
+      <sequence>2</sequence>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE">
+      <sys_id>8d7b3c7f30e24ba985a7db3ccb7c5663</sys_id>
+      <name>x_1643968_bell_f_0_bell_flash</name>
+      <element>flash_status</element>
+      <label>Sent</label>
+      <value>sent</value>
+      <sequence>3</sequence>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE">
+      <sys_id>bbe2555b2fc14bf19b136bcb6142540c</sys_id>
+      <name>x_1643968_bell_f_0_bell_flash</name>
+      <element>flash_status</element>
+      <label>Failed</label>
+      <value>failed</value>
+      <sequence>4</sequence>
+      <language>en</language>
+    </sys_choice>
+  </sys_choice_set>
+</record_update>

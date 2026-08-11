@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+  <sp_widget action="INSERT_OR_UPDATE">
+    <sys_id>58adaa2e27f3495c956dbaa771c5f9fc</sys_id>
+    <sys_scope display_value="x_1643968_bell_f_0">2ac1f9cb932acf108b5df14fdd03d6e0</sys_scope>
+    <sys_update_name>sp_widget_58adaa2e27f3495c956dbaa771c5f9fc</sys_update_name>
+    <category>custom</category>
+    <client_script><![CDATA[api.controller = function($location) {
+  var c = this;
+
+  c.goToRecordList = function() {
+    $location.search('id', 'bf_record_list');
+  };
+};
+]]></client_script>
+    <controller_as>c</controller_as>
+    <css><![CDATA[.sp-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border: 1px solid $border-tertiary;
+  border-radius: $border-radius-large;
+  box-shadow: 0 1px 4px rgba($text-color, 0.07);
+  background: $background-primary;
+  overflow: hidden;
+  margin-bottom: 0;
+}
+.sp-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  background: $background-primary;
+  border-bottom: 1px solid $border-tertiary;
+  min-height: 52px;
+  flex-shrink: 0;
+}
+.sp-card-title {
+  font-size: $font-size-large;
+  font-weight: 600;
+  color: $text-color;
+  margin: 0;
+}
+.sp-card-icon {
+  margin-right: 8px;
+  color: $brand-primary;
+  font-size: 16px;
+}
+.sp-card-body {
+  padding: 24px;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}
+.sp-about-text {
+  font-size: $font-size-base;
+  color: $text-color;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+.sp-about-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px 0;
+  li {
+    padding: 6px 0;
+    font-size: $font-size-base;
+    color: $text-secondary;
+  }
+}
+.sp-feature-check {
+  color: $brand-success;
+  margin-right: 8px;
+  font-size: 12px;
+}
+.sp-btn-group {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: auto;
+  flex-wrap: wrap;
+}
+.sp-btn-primary {
+  height: 44px;
+  padding: 0 20px;
+  border-radius: $border-radius-base;
+  font-size: $font-size-base;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.15s, box-shadow 0.15s;
+  cursor: pointer;
+  border: none;
+  background: $brand-primary;
+  color: $btn-primary-color;
+  &:hover:not(:disabled) {
+    background: $brand-primary-dark;
+    box-shadow: 0 2px 8px rgba($brand-primary, 0.3);
+    color: $btn-primary-color;
+  }
+}
+.sp-btn-secondary {
+  background: $background-primary;
+  border: 1px solid $border-tertiary;
+  color: $text-color;
+  height: 44px;
+  padding: 0 20px;
+  border-radius: $border-radius-base;
+  font-size: $font-size-base;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  &:hover {
+    background: $background-secondary;
+  }
+}
+]]></css>
+    <data_table>sp_instance</data_table>
+    <demo_data/>
+    <description/>
+    <docs/>
+    <field_list/>
+    <has_preview>false</has_preview>
+    <id>bf_about_flash</id>
+    <internal>false</internal>
+    <link>function link(scope, element, attrs, controller) {
+}</link>
+    <name>Bell Flash About</name>
+    <option_schema/>
+    <public>false</public>
+    <roles/>
+    <script>(function () {
+    /* populate the 'data' object */
+    /* e.g., data.table = $sp.getValue('table'); */
+})();</script>
+    <servicenow>false</servicenow>
+    <template><![CDATA[<div class="panel panel-default sp-card">
+  <div class="panel-heading sp-card-header">
+    <h3 class="panel-title sp-card-title">
+      <span class="glyphicon glyphicon-flash sp-card-icon"></span>
+      About Flash
+    </h3>
+  </div>
+  <div class="panel-body sp-card-body">
+    <p class="sp-about-text">Bell Canada uses <strong>Flash</strong> to send critical notifications to particular users or groups across the organization. Flash ensures that important messages reach the right people at the right time.</p>
+    <ul class="sp-about-features">
+      <li><span class="glyphicon glyphicon-ok sp-feature-check"></span> Send targeted notifications</li>
+      <li><span class="glyphicon glyphicon-ok sp-feature-check"></span> Group and user-level delivery</li>
+      <li><span class="glyphicon glyphicon-ok sp-feature-check"></span> Severity-based prioritization</li>
+      <li><span class="glyphicon glyphicon-ok sp-feature-check"></span> NETS ticket integration</li>
+    </ul>
+    <div class="sp-btn-group">
+      <button type="button" class="btn btn-default sp-btn-secondary" ng-click="c.learnMore()">
+        <span class="glyphicon glyphicon-info-sign"></span> Learn More
+      </button>
+      <button type="button" class="btn btn-primary sp-btn-primary" ng-click="c.goToRecordList()">
+        <span class="glyphicon glyphicon-play"></span> Let's Get Started
+      </button>
+    </div>
+  </div>
+</div>
+]]></template>
+  </sp_widget>
+</record_update>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_container">
+  <sp_container action="INSERT_OR_UPDATE">
+    <sys_id>be49743e9430451bb36529b279ac8cf3</sys_id>
+    <sys_scope display_value="x_1643968_bell_f_0">2ac1f9cb932acf108b5df14fdd03d6e0</sys_scope>
+    <sys_update_name>sp_container_be49743e9430451bb36529b279ac8cf3</sys_update_name>
+    <background_color/>
+    <background_image/>
+    <background_style>default</background_style>
+    <bootstrap_alt>false</bootstrap_alt>
+    <class_name/>
+    <container_class_name/>
+    <name>NNOC Container</name>
+    <order>1</order>
+    <semantic_tag/>
+    <sp_page id="bf_nnoc">024be919a75a411fa29e3607f535f08e</sp_page>
+    <subheader>false</subheader>
+    <title/>
+    <width>container</width>
+  </sp_container>
+</record_update>

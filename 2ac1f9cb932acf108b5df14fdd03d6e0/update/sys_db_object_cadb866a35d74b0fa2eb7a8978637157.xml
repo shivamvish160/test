@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_db_object">
+  <sys_db_object action="INSERT_OR_UPDATE">
+    <sys_id>cadb866a35d74b0fa2eb7a8978637157</sys_id>
+    <sys_scope display_value="x_1643968_bell_f_0">2ac1f9cb932acf108b5df14fdd03d6e0</sys_scope>
+    <sys_update_name>sys_db_object_cadb866a35d74b0fa2eb7a8978637157</sys_update_name>
+    <access>public</access>
+    <actions_access>false</actions_access>
+    <alter_access>false</alter_access>
+    <caller_access/>
+    <client_scripts_access>false</client_scripts_access>
+    <create_access>false</create_access>
+    <create_access_controls>false</create_access_controls>
+    <delete_access>false</delete_access>
+    <is_extendable>true</is_extendable>
+    <label>Bell Flash</label>
+    <live_feed_enabled>false</live_feed_enabled>
+    <name>x_1643968_bell_f_0_bell_flash</name>
+    <number_ref category="x_1643968_bell_f_0_bell_flash" prefix="FLASH">42e4f295bcb94814b1959c688f0a4fcf</number_ref>
+    <read_access>true</read_access>
+    <scriptable_table>false</scriptable_table>
+    <super_class name="task">d259bab9a87a4af999bb725ebb6e6903</super_class>
+    <update_access>false</update_access>
+    <user_role/>
+    <ws_access>true</ws_access>
+  </sys_db_object>
+</record_update>
