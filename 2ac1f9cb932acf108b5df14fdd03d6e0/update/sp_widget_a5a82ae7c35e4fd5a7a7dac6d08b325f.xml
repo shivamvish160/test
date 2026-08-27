@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller = function() {
+  var c = this;
+
+  c.activeSection = '';
+  c.netsNumber = '';
+  c.netsSearching = false;
+  c.netsRecord = null;
+  c.submitting = false;
+
+  c.form = {
+    short_description: '',
+    notification_message: '',
+    severity: 'medium',
+    recipient_group: '',
+    recipient_user: ''
+  };
+
+  c.showNets = function() {
+    c.activeSection = 'nets';
+    c.netsRecord = null;
+    c.data.message = '';
+    c.data.success = false;
+  };
+
+  c.showGeneral = function() {
+    c.activeSection = 'general';
+    c.data.message = '';
+    c.data.success = false;
+    c.data.formSaved = false;
+  };
+
+  c.searchNets = function() {
+    if (!c.netsNumber) return;
+    c.netsSearching = true;
+    c.netsRecord = null;
+    c.data.message = '';
+    c.server.get({ action: 'searchNets', nets_number: c.netsNumber }).then(function(r) {
+      c.data = r.data;
+      c.netsRecord = r.data.netsRecord;
+      c.netsSearching = false;
+    }, function() {
+      c.netsSearching = false;
+    });
+  };
+
+  c.saveDraft = function() {
+    c.submitForm('draft');
+  };
+
+  c.sendFlash = function() {
+    c.submitForm('sent');
+  };
+
+  c.submitForm = function(status) {
+    if (!c.form.short_description) return;
+    c.submitting = true;
+    c.server.get({
+      action: 'saveGeneral',
+      short_description: c.form.short_description,
+      notification_message: c.form.notification_message,
+      severity: c.form.severity,
+      recipient_group: c.form.recipient_group,
+      recipient_user: c.form.recipient_user,
+      flash_status: status
+    }).then(function(r) {
+      c.data = r.data;
+      c.submitting = false;
+      if (r.data.success) {
+        c.form = {
+          short_description: '',
+          notification_message: '',
+          severity: 'medium',
+          recipient_group: '',
+          recipient_user: ''
+        };
+      }
+    }, function() {
+      c.submitting = false;
+    });
+  };
+
+  c.getSeverityClass = function(severity) {
+    if (!severity) return 'label-default';
+    var s = severity.toLowerCase();
+    if (s === 'critical') return 'label-danger';
+    if (s === 'high') return 'label-warning';
+    if (s === 'medium') return 'label-info';
+    if (s === 'low') return 'label-success';
+    return 'label-default';
+  };
+};
+]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.sp-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border: 1px solid $border-tertiary;
+  border-radius: $border-radius-large;
+  box-shadow: 0 1px 4px rgba($text-color, 0.07);
+  background: $background-primary;
+  overflow: hidden;
+  margin-bottom: 0;
+}
+.sp-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  background: $background-primary;
+  border-bottom: 1px solid $border-tertiary;
+  min-height: 52px;
+  flex-shrink: 0;
+}
+.sp-card-title {
+  font-size: $font-size-large;
+  font-weight: 600;
+  color: $text-color;
+  margin: 0;
+}
+.sp-card-icon {
+  margin-right: 8px;
+  color: $brand-primary;
+  font-size: 16px;
+}
+.sp-card-body {
+  padding: 24px;
+  flex: 1 1 auto;
+}
+.sp-btn-group {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+.sp-btn-primary {
+  height: 44px;
+  padding: 0 20px;
+  border-radius: $border-radius-base;
+  font-size: $font-size-base;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.15s, box-shadow 0.15s;
+  cursor: pointer;
+  border: none;
+  background: $brand-primary;
+  color: $btn-primary-color;
+  &amp;:hover:not(:disabled) {
+    background: $brand-primary-dark;
+    box-shadow: 0 2px 8px rgba($brand-primary, 0.3);
+    color: $btn-primary-color;
+  }
+  &amp;:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+}
+.sp-btn-secondary {
+  background: $background-primary;
+  border: 1px solid $border-tertiary;
+  color: $text-color;
+  height: 44px;
+  padding: 0 20px;
+  border-radius: $border-radius-base;
+  font-size: $font-size-base;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  &amp;:hover {
+    background: $background-secondary;
+  }
+}
+.sp-input {
+  height: $input-height-base;
+  border: 1px solid $border-tertiary;
+  border-radius: $border-radius-base;
+  padding: 0 12px;
+  font-size: $font-size-base;
+  color: $text-color;
+  background: $background-primary;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  width: 100%;
+  &amp;:focus {
+    border-color: $brand-primary;
+    box-shadow: 0 0 0 3px rgba($brand-primary, 0.15);
+    outline: none;
+  }
+}
+.sp-textarea {
+  border-radius: $border-radius-base;
+  border: 1px solid $border-tertiary;
+  padding: 12px;
+  font-size: $font-size-base;
+  resize: vertical;
+  min-height: 100px;
+  transition: border-color 0.15s;
+  &amp;:focus {
+    border-color: $brand-primary;
+    box-shadow: 0 0 0 3px rgba($brand-primary, 0.15);
+    outline: none;
+  }
+}
+.sp-nets-result {
+  margin-top: 24px;
+  padding: 16px;
+  background: $background-secondary;
+  border-radius: $border-radius-base;
+  border: 1px solid $border-tertiary;
+  dt {
+    font-size: $font-size-small;
+    color: $text-muted;
+    margin-top: 8px;
+  }
+  dd {
+    font-size: $font-size-base;
+    color: $text-color;
+    margin-left: 0;
+    margin-bottom: 4px;
+  }
+}
+.sp-detail-message {
+  background: $background-primary;
+  padding: 12px 16px;
+  border-radius: $border-radius-base;
+  font-size: $font-size-base;
+  line-height: 1.6;
+  margin-top: 4px;
+  border: 1px solid $border-tertiary;
+}
+.sp-back-btn {
+  margin-top: 24px;
+}
+@keyframes sp-spin {
+  to { transform: rotate(360deg); }
+}
+.sp-spin {
+  animation: sp-spin 0.8s linear infinite;
+}
+</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>bf_nnoc_main</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+}]]></link>
+        <name>Bell Flash NNOC Main</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  data.message = '';
+  data.success = false;
+  data.netsRecord = null;
+  data.formSaved = false;
+
+  try {
+    if (input && input.action === 'searchNets') {
+      var gr = new GlideRecord('x_1643968_bell_f_0_bell_flash');
+      gr.addQuery('nets_number', input.nets_number);
+      gr.setLimit(1);
+      gr.query();
+      if (gr.next()) {
+        data.netsRecord = {
+          sys_id: gr.getUniqueValue(),
+          number: gr.getValue('number') + '',
+          short_description: gr.getValue('short_description') + '',
+          flash_type: gr.getDisplayValue('flash_type') + '',
+          flash_status: gr.getDisplayValue('flash_status') + '',
+          severity: gr.getDisplayValue('severity') + '',
+          notification_message: gr.getValue('notification_message') + '',
+          nets_number: gr.getValue('nets_number') + '',
+          recipient_group: gr.getDisplayValue('recipient_group') + '',
+          recipient_user: gr.getDisplayValue('recipient_user') + '',
+          sys_created_on: gr.getDisplayValue('sys_created_on') + ''
+        };
+        data.success = true;
+      } else {
+        data.message = 'No flash record found for NETS number: ' + input.nets_number;
+        data.success = false;
+      }
+      return;
+    }
+
+    if (input && input.action === 'saveGeneral') {
+      var newGr = new GlideRecord('x_1643968_bell_f_0_bell_flash');
+      newGr.initialize();
+      newGr.setValue('short_description', input.short_description || '');
+      newGr.setValue('notification_message', input.notification_message || '');
+      newGr.setValue('severity', input.severity || 'medium');
+      newGr.setValue('flash_type', 'general');
+      newGr.setValue('flash_status', input.flash_status || 'draft');
+      if (input.recipient_group) {
+        newGr.setValue('recipient_group', input.recipient_group);
+      }
+      if (input.recipient_user) {
+        newGr.setValue('recipient_user', input.recipient_user);
+      }
+      var id = newGr.insert();
+      if (id) {
+        data.success = true;
+        data.formSaved = true;
+        data.message = newGr.getValue('number') + ' created successfully with status: ' + input.flash_status;
+      } else {
+        data.success = false;
+        data.message = 'Failed to create flash record.';
+      }
+      return;
+    }
+  } catch (e) {
+    gs.error('bf_nnoc_main error: ' + e.message);
+    data.message = 'An error occurred: ' + e.message;
+  }
+})();
+]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-08-11 11:58:42</sys_created_on>
+        <sys_id>a5a82ae7c35e4fd5a7a7dac6d08b325f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Bell Flash NNOC Main</sys_name>
+        <sys_package display_value="Bell Flash" source="x_1643968_bell_f_0">2ac1f9cb932acf108b5df14fdd03d6e0</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Bell Flash">2ac1f9cb932acf108b5df14fdd03d6e0</sys_scope>
+        <sys_update_name>sp_widget_a5a82ae7c35e4fd5a7a7dac6d08b325f</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-08-11 11:58:42</sys_updated_on>
+        <template><![CDATA[<div class="panel panel-default sp-card">
+  <div class="panel-heading sp-card-header">
+    <h3 class="panel-title sp-card-title">
+      <span class="glyphicon glyphicon-flash sp-card-icon"></span>
+      NNOC - Create Flash Notification
+    </h3>
+  </div>
+  <div class="panel-body sp-card-body">
+    <!-- Action Buttons -->
+    <div class="sp-btn-group" ng-if="!c.activeSection">
+      <button type="button" class="btn btn-primary sp-btn-primary" ng-click="c.showNets()">
+        <span class="glyphicon glyphicon-import"></span> Create Flash from NETS Ticket
+      </button>
+      <button type="button" class="btn btn-default sp-btn-secondary" ng-click="c.showGeneral()">
+        <span class="glyphicon glyphicon-file"></span> General
+      </button>
+    </div>
+
+    <!-- Alerts -->
+    <div class="alert alert-success alert-dismissible" ng-if="c.data.success && c.data.message" role="alert">
+      <button type="button" class="close" ng-click="c.data.message=null" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <span class="glyphicon glyphicon-ok-circle"></span>
+      <strong>Success!</strong> {{c.data.message}}
+    </div>
+    <div class="alert alert-warning" ng-if="!c.data.success && c.data.message" role="alert">
+      <span class="glyphicon glyphicon-warning-sign"></span>
+      {{c.data.message}}
+    </div>
+
+    <!-- NETS Section -->
+    <div ng-if="c.activeSection === 'nets'">
+      <h4>Search by NETS Ticket Number</h4>
+      <div class="form-group">
+        <label class="control-label" for="nets_input">NETS Number</label>
+        <div class="input-group">
+          <input type="text" class="form-control sp-input" id="nets_input" ng-model="c.netsNumber" placeholder="Enter NETS ticket number" />
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-primary sp-btn-primary" ng-click="c.searchNets()" ng-disabled="c.netsSearching || !c.netsNumber">
+              <span class="glyphicon glyphicon-search" ng-if="!c.netsSearching"></span>
+              <span class="glyphicon glyphicon-refresh" ng-class="{'sp-spin': c.netsSearching}" ng-if="c.netsSearching"></span>
+              Search
+            </button>
+          </span>
+        </div>
+      </div>
+
+      <!-- NETS Result -->
+      <div ng-if="c.netsRecord" class="sp-nets-result">
+        <h4>{{c.netsRecord.number}} - {{c.netsRecord.short_description}}</h4>
+        <div class="row">
+          <div class="col-md-6 col-xs-12">
+            <dl>
+              <dt>Flash Type</dt><dd>{{c.netsRecord.flash_type}}</dd>
+              <dt>Status</dt><dd><span class="label" ng-class="c.getSeverityClass(c.netsRecord.flash_status)">{{c.netsRecord.flash_status}}</span></dd>
+              <dt>Severity</dt><dd><span class="label" ng-class="c.getSeverityClass(c.netsRecord.severity)">{{c.netsRecord.severity}}</span></dd>
+              <dt>NETS Number</dt><dd>{{c.netsRecord.nets_number}}</dd>
+            </dl>
+          </div>
+          <div class="col-md-6 col-xs-12">
+            <dl>
+              <dt>Recipient Group</dt><dd>{{c.netsRecord.recipient_group || 'N/A'}}</dd>
+              <dt>Recipient User</dt><dd>{{c.netsRecord.recipient_user || 'N/A'}}</dd>
+              <dt>Created</dt><dd>{{c.netsRecord.sys_created_on}}</dd>
+            </dl>
+          </div>
+        </div>
+        <div ng-if="c.netsRecord.notification_message">
+          <dt>Message</dt>
+          <dd class="sp-detail-message">{{c.netsRecord.notification_message}}</dd>
+        </div>
+      </div>
+
+      <button type="button" class="btn btn-default sp-btn-secondary sp-back-btn" ng-click="c.activeSection = ''">
+        <span class="glyphicon glyphicon-arrow-left"></span> Back
+      </button>
+    </div>
+
+    <!-- General Form Section -->
+    <div ng-if="c.activeSection === 'general'">
+      <h4>Create General Flash Notification</h4>
+
+      <div class="form-group" ng-class="{'has-error': !c.form.short_description && c.attempted}">
+        <label class="control-label" for="gen_short_desc">Short Description <span class="text-danger">*</span></label>
+        <input type="text" class="form-control sp-input" id="gen_short_desc" ng-model="c.form.short_description" placeholder="Enter short description" />
+      </div>
+
+      <div class="form-group">
+        <label class="control-label" for="gen_message">Notification Message</label>
+        <textarea class="form-control sp-textarea" id="gen_message" ng-model="c.form.notification_message" placeholder="Enter notification message" rows="4"></textarea>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4 col-xs-12">
+          <div class="form-group">
+            <label class="control-label" for="gen_severity">Severity</label>
+            <select class="form-control sp-input" id="gen_severity" ng-model="c.form.severity">
+              <option value="critical">Critical</option>
+              <option value="high">High</option>
+              <option value="medium">Medium</option>
+              <option value="low">Low</option>
+              <option value="informational">Informational</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-4 col-xs-12">
+          <div class="form-group">
+            <label class="control-label" for="gen_group">Recipient Group (sys_id)</label>
+            <input type="text" class="form-control sp-input" id="gen_group" ng-model="c.form.recipient_group" placeholder="Group sys_id" />
+          </div>
+        </div>
+        <div class="col-md-4 col-xs-12">
+          <div class="form-group">
+            <label class="control-label" for="gen_user">Recipient User (sys_id)</label>
+            <input type="text" class="form-control sp-input" id="gen_user" ng-model="c.form.recipient_user" placeholder="User sys_id" />
+          </div>
+        </div>
+      </div>
+
+      <div class="sp-btn-group">
+        <button type="button" class="btn btn-default sp-btn-secondary" ng-click="c.saveDraft()" ng-disabled="c.submitting || !c.form.short_description">
+          <span class="glyphicon glyphicon-floppy-disk"></span> Save Draft
+        </button>
+        <button type="button" class="btn btn-primary sp-btn-primary" ng-click="c.sendFlash()" ng-disabled="c.submitting || !c.form.short_description">
+          <span class="glyphicon glyphicon-share-alt" ng-if="!c.submitting"></span>
+          <span class="glyphicon glyphicon-refresh" ng-class="{'sp-spin': c.submitting}" ng-if="c.submitting"></span>
+          Send Flash
+        </button>
+        <button type="button" class="btn btn-default sp-btn-secondary" ng-click="c.activeSection = ''">
+          <span class="glyphicon glyphicon-arrow-left"></span> Back
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+]]></template>
+    </sp_widget>
+</record_update>

@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller = function() {
+  var c = this;
+
+  c.searchQuery = '';
+  c.selectedRecord = null;
+
+  c.viewRecord = function(record) {
+    c.loading = true;
+    c.server.get({ action: 'getDetail', sys_id: record.sys_id }).then(function(r) {
+      c.selectedRecord = r.data.selectedRecord;
+      c.loading = false;
+    }, function() {
+      c.loading = false;
+    });
+  };
+
+  c.closeDetail = function() {
+    c.selectedRecord = null;
+  };
+
+  c.getSeverityClass = function(severity) {
+    if (!severity) return 'label-default';
+    var s = severity.toLowerCase();
+    if (s === 'critical') return 'label-danger';
+    if (s === 'high') return 'label-warning';
+    if (s === 'medium') return 'label-info';
+    if (s === 'low') return 'label-success';
+    return 'label-default';
+  };
+
+  c.getStatusClass = function(status) {
+    if (!status) return 'label-default';
+    var s = status.toLowerCase();
+    if (s === 'sent') return 'label-success';
+    if (s === 'draft') return 'label-default';
+    if (s === 'pending') return 'label-warning';
+    if (s === 'failed') return 'label-danger';
+    return 'label-default';
+  };
+};
+]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.sp-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border: 1px solid $border-tertiary;
+  border-radius: $border-radius-large;
+  box-shadow: 0 1px 4px rgba($text-color, 0.07);
+  background: $background-primary;
+  overflow: hidden;
+  margin-bottom: 0;
+}
+.sp-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  background: $background-primary;
+  border-bottom: 1px solid $border-tertiary;
+  min-height: 52px;
+  flex-shrink: 0;
+}
+.sp-card-title {
+  font-size: $font-size-large;
+  font-weight: 600;
+  color: $text-color;
+  margin: 0;
+}
+.sp-card-icon {
+  margin-right: 8px;
+  color: $brand-primary;
+  font-size: 16px;
+}
+.sp-card-body-flush {
+  padding: 0;
+  flex: 1 1 auto;
+  overflow: hidden;
+}
+.sp-table-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: $background-secondary;
+  border-bottom: 1px solid $border-tertiary;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.sp-search-box {
+  position: relative;
+}
+.sp-search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: $text-muted;
+  font-size: 12px;
+}
+.sp-search-input {
+  border: 1px solid $border-tertiary;
+  border-radius: $border-radius-base;
+  height: 44px;
+  width: 300px;
+  padding: 0 10px 0 30px;
+  font-size: $font-size-small;
+  &amp;:focus {
+    border-color: $brand-primary;
+    outline: none;
+  }
+}
+.sp-th {
+  font-size: 12px;
+  font-weight: 600;
+  color: $text-muted;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 12px 16px;
+  border-bottom: 2px solid $border-tertiary;
+  background: $background-secondary;
+  white-space: nowrap;
+}
+.sp-td {
+  font-size: $font-size-small;
+  padding: 12px 16px;
+  color: $text-color;
+  border-bottom: 1px solid $border-tertiary;
+  vertical-align: middle;
+}
+.sp-clickable-row {
+  cursor: pointer;
+  &amp;:hover {
+    background: $background-secondary;
+  }
+}
+.sp-table-footer {
+  padding: 8px 16px;
+  font-size: 12px;
+  color: $text-muted;
+  border-top: 1px solid $border-tertiary;
+  background: $background-secondary;
+}
+.sp-empty-state {
+  padding: 64px 24px;
+}
+.sp-empty-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+  display: block;
+  opacity: 0.35;
+  color: $text-muted;
+}
+.sp-empty-title {
+  font-size: $font-size-large;
+  font-weight: 600;
+  color: $text-color;
+  margin-bottom: 8px;
+}
+.sp-detail-panel {
+  padding: 24px;
+}
+.sp-detail-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.sp-detail-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: $text-color;
+  margin: 0;
+}
+.sp-detail-body {
+  dt {
+    font-size: $font-size-small;
+    color: $text-muted;
+    margin-top: 12px;
+  }
+  dd {
+    font-size: $font-size-base;
+    color: $text-color;
+    margin-left: 0;
+    margin-bottom: 4px;
+  }
+}
+.sp-detail-message {
+  background: $background-secondary;
+  padding: 12px 16px;
+  border-radius: $border-radius-base;
+  font-size: $font-size-base;
+  line-height: 1.6;
+  margin-top: 4px;
+}
+</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>bf_flash_record_list</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+}]]></link>
+        <name>Bell Flash Record List</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  data.records = [];
+  data.selectedRecord = null;
+
+  try {
+    if (input && input.action === 'getDetail') {
+      var detail = new GlideRecord('x_1643968_bell_f_0_bell_flash');
+      detail.setLimit(1);
+      if (detail.get(input.sys_id)) {
+        data.selectedRecord = {
+          sys_id: detail.getUniqueValue(),
+          number: detail.getValue('number') + '',
+          short_description: detail.getValue('short_description') + '',
+          flash_type: detail.getDisplayValue('flash_type') + '',
+          flash_status: detail.getDisplayValue('flash_status') + '',
+          severity: detail.getDisplayValue('severity') + '',
+          notification_message: detail.getValue('notification_message') + '',
+          nets_number: detail.getValue('nets_number') + '',
+          recipient_group: detail.getDisplayValue('recipient_group') + '',
+          recipient_user: detail.getDisplayValue('recipient_user') + '',
+          sys_created_on: detail.getDisplayValue('sys_created_on') + ''
+        };
+      }
+      return;
+    }
+
+    var gr = new GlideRecord('x_1643968_bell_f_0_bell_flash');
+    gr.orderByDesc('sys_created_on');
+    gr.setLimit(50);
+    gr.query();
+    while (gr.next()) {
+      data.records.push({
+        sys_id: gr.getUniqueValue(),
+        number: gr.getValue('number') + '',
+        short_description: gr.getValue('short_description') + '',
+        flash_type: gr.getDisplayValue('flash_type') + '',
+        flash_status: gr.getDisplayValue('flash_status') + '',
+        severity: gr.getDisplayValue('severity') + '',
+        sys_created_on: gr.getDisplayValue('sys_created_on') + ''
+      });
+    }
+  } catch (e) {
+    gs.error('bf_flash_record_list error: ' + e.message);
+  }
+})();
+]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-08-11 11:58:42</sys_created_on>
+        <sys_id>3e3f618278bd4d2ba6a3ba36165f4bab</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Bell Flash Record List</sys_name>
+        <sys_package display_value="Bell Flash" source="x_1643968_bell_f_0">2ac1f9cb932acf108b5df14fdd03d6e0</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Bell Flash">2ac1f9cb932acf108b5df14fdd03d6e0</sys_scope>
+        <sys_update_name>sp_widget_3e3f618278bd4d2ba6a3ba36165f4bab</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-08-11 11:58:42</sys_updated_on>
+        <template><![CDATA[<div class="panel panel-default sp-card">
+  <div class="panel-heading sp-card-header">
+    <h3 class="panel-title sp-card-title">
+      <span class="glyphicon glyphicon-list sp-card-icon"></span>
+      Flash Records
+    </h3>
+  </div>
+  <div class="panel-body sp-card-body-flush">
+    <div class="sp-table-toolbar">
+      <div class="sp-search-box">
+        <span class="glyphicon glyphicon-search sp-search-icon"></span>
+        <input type="text" class="sp-search-input" ng-model="c.searchQuery" placeholder="Filter by number or description..." />
+      </div>
+    </div>
+
+    <!-- Record Detail View -->
+    <div ng-if="c.selectedRecord" class="sp-detail-panel">
+      <div class="sp-detail-header">
+        <h4 class="sp-detail-title">{{c.selectedRecord.number}} - {{c.selectedRecord.short_description}}</h4>
+        <button type="button" class="btn btn-default btn-sm" ng-click="c.closeDetail()">
+          <span class="glyphicon glyphicon-remove"></span> Close
+        </button>
+      </div>
+      <div class="sp-detail-body">
+        <div class="row">
+          <div class="col-md-6 col-xs-12">
+            <dl>
+              <dt>Flash Type</dt><dd>{{c.selectedRecord.flash_type}}</dd>
+              <dt>Status</dt><dd><span class="label" ng-class="c.getStatusClass(c.selectedRecord.flash_status)">{{c.selectedRecord.flash_status}}</span></dd>
+              <dt>Severity</dt><dd><span class="label" ng-class="c.getSeverityClass(c.selectedRecord.severity)">{{c.selectedRecord.severity}}</span></dd>
+            </dl>
+          </div>
+          <div class="col-md-6 col-xs-12">
+            <dl>
+              <dt>NETS Number</dt><dd>{{c.selectedRecord.nets_number || 'N/A'}}</dd>
+              <dt>Recipient Group</dt><dd>{{c.selectedRecord.recipient_group || 'N/A'}}</dd>
+              <dt>Recipient User</dt><dd>{{c.selectedRecord.recipient_user || 'N/A'}}</dd>
+              <dt>Created</dt><dd>{{c.selectedRecord.sys_created_on}}</dd>
+            </dl>
+          </div>
+        </div>
+        <div ng-if="c.selectedRecord.notification_message">
+          <dt>Notification Message</dt>
+          <dd class="sp-detail-message">{{c.selectedRecord.notification_message}}</dd>
+        </div>
+      </div>
+    </div>
+
+    <!-- Record List Table -->
+    <table class="table table-striped table-hover" ng-if="!c.selectedRecord">
+      <thead>
+        <tr>
+          <th class="sp-th">Number</th>
+          <th class="sp-th">Short Description</th>
+          <th class="sp-th">Flash Type</th>
+          <th class="sp-th">Status</th>
+          <th class="sp-th">Severity</th>
+          <th class="sp-th">Created</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="sp-clickable-row" ng-repeat="record in c.data.records | filter:c.searchQuery track by record.sys_id" ng-click="c.viewRecord(record)">
+          <td class="sp-td"><strong>{{record.number}}</strong></td>
+          <td class="sp-td">{{record.short_description}}</td>
+          <td class="sp-td">{{record.flash_type}}</td>
+          <td class="sp-td"><span class="label" ng-class="c.getStatusClass(record.flash_status)">{{record.flash_status}}</span></td>
+          <td class="sp-td"><span class="label" ng-class="c.getSeverityClass(record.severity)">{{record.severity}}</span></td>
+          <td class="sp-td">{{record.sys_created_on}}</td>
+        </tr>
+        <tr ng-if="(c.data.records | filter:c.searchQuery).length === 0">
+          <td colspan="6" class="text-center">
+            <div class="sp-empty-state">
+              <span class="glyphicon glyphicon-inbox sp-empty-icon"></span>
+              <h4 class="sp-empty-title">No flash records found</h4>
+              <p class="text-muted">No records match your search criteria.</p>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="sp-table-footer" ng-if="!c.selectedRecord">
+      <span>{{c.data.records.length}} record(s)</span>
+    </div>
+  </div>
+</div>
+]]></template>
+    </sp_widget>
+</record_update>

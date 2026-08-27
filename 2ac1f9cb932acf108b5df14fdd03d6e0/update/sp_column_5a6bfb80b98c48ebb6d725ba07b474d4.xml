@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_column">
+    <sp_column action="INSERT_OR_UPDATE">
+        <aria_label/>
+        <class_name/>
+        <order>3</order>
+        <semantic_tag/>
+        <size>4</size>
+        <size_lg/>
+        <size_sm>12</size_sm>
+        <size_xs/>
+        <sp_row display_value="1">dba35c1be5c24edc8bffc436e1d49b33</sp_row>
+        <sys_class_name>sp_column</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-08-11 11:58:40</sys_created_on>
+        <sys_id>5a6bfb80b98c48ebb6d725ba07b474d4</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>3</sys_name>
+        <sys_package display_value="Bell Flash" source="x_1643968_bell_f_0">2ac1f9cb932acf108b5df14fdd03d6e0</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Bell Flash">2ac1f9cb932acf108b5df14fdd03d6e0</sys_scope>
+        <sys_update_name>sp_column_5a6bfb80b98c48ebb6d725ba07b474d4</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-08-11 11:58:40</sys_updated_on>
+    </sp_column>
+</record_update>

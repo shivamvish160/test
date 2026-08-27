@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="cadb866a35d74b0fa2eb7a8978637157" extends="task" label="Bell Flash" name="x_1643968_bell_f_0_bell_flash" type="collection">
+        <element default="general" label="Flash Type" mandatory="true" max_length="40" name="flash_type" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="From NETS Ticket" sequence="2" value="from_nets"/>
+                <element inactive_on_update="false" label="General" sequence="1" value="general"/>
+            </choice>
+        </element>
+        <element default="draft" label="Flash Status" max_length="40" name="flash_status" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Pending" sequence="2" value="pending"/>
+                <element inactive_on_update="false" label="Sent" sequence="3" value="sent"/>
+                <element inactive_on_update="false" label="Draft" sequence="1" value="draft"/>
+                <element inactive_on_update="false" label="Failed" sequence="4" value="failed"/>
+            </choice>
+        </element>
+        <element label="NETS Number" max_length="40" name="nets_number" type="string"/>
+        <element label="Recipient User" max_length="32" name="recipient_user" reference="sys_user" type="reference"/>
+        <element label="Notification Message" max_length="4000" name="notification_message" type="multi_two_lines"/>
+        <element label="Recipient Group" max_length="32" name="recipient_group" reference="sys_user_group" type="reference"/>
+        <element default="medium" label="Severity" max_length="40" name="severity" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Informational" sequence="5" value="informational"/>
+                <element inactive_on_update="false" label="Critical" sequence="1" value="critical"/>
+                <element inactive_on_update="false" label="High" sequence="2" value="high"/>
+                <element inactive_on_update="false" label="Medium" sequence="3" value="medium"/>
+                <element inactive_on_update="false" label="Low" sequence="4" value="low"/>
+            </choice>
+        </element>
+    </element>
+</database>
