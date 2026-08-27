@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sys_number">
-  <sys_number action="INSERT_OR_UPDATE">
-    <sys_id>42e4f295bcb94814b1959c688f0a4fcf</sys_id>
-    <sys_scope display_value="x_1643968_bell_f_0">2ac1f9cb932acf108b5df14fdd03d6e0</sys_scope>
-    <sys_update_name>sys_number_42e4f295bcb94814b1959c688f0a4fcf</sys_update_name>
-    <category>x_1643968_bell_f_0_bell_flash</category>
-    <maximum_digits>7</maximum_digits>
-    <number>1000</number>
-    <prefix>FLASH</prefix>
-  </sys_number>
+    <sys_number action="INSERT_OR_UPDATE">
+        <category display_value="" name="x_1643968_bell_f_0_bell_flash">x_1643968_bell_f_0_bell_flash</category>
+        <maximum_digits>7</maximum_digits>
+        <number>1000</number>
+        <prefix>FLASH</prefix>
+        <sys_class_name>sys_number</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-08-11 11:58:46</sys_created_on>
+        <sys_id>42e4f295bcb94814b1959c688f0a4fcf</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>FLASH</sys_name>
+        <sys_package display_value="Bell Flash" source="x_1643968_bell_f_0">2ac1f9cb932acf108b5df14fdd03d6e0</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Bell Flash">2ac1f9cb932acf108b5df14fdd03d6e0</sys_scope>
+        <sys_update_name>sys_number_42e4f295bcb94814b1959c688f0a4fcf</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-08-11 11:58:46</sys_updated_on>
+    </sys_number>
 </record_update>

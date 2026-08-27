@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
-  <sp_widget action="INSERT_OR_UPDATE">
-    <sys_id>10e332a44c404a8ebeaf4fe4c74370b3</sys_id>
-    <sys_scope display_value="x_1643968_bell_f_0">2ac1f9cb932acf108b5df14fdd03d6e0</sys_scope>
-    <sys_update_name>sp_widget_10e332a44c404a8ebeaf4fe4c74370b3</sys_update_name>
-    <category>custom</category>
-    <client_script><![CDATA[api.controller = function() {
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller = function() {
   var c = this;
 };
 ]]></client_script>
-    <controller_as>c</controller_as>
-    <css><![CDATA[.sp-hero {
+        <controller_as>c</controller_as>
+        <css>.sp-hero {
   background: linear-gradient(135deg, lighten($brand-primary, 30%) 0%, lighten($brand-primary, 15%) 50%, $brand-primary 100%);
   border-radius: $border-radius-large;
   overflow: hidden;
   position: relative;
-  &::after {
+  &amp;::after {
     content: "";
     position: absolute;
     inset: 0;
@@ -60,26 +57,26 @@
   gap: 8px;
   backdrop-filter: blur(4px);
   transition: background 0.15s;
-  &:hover {
+  &amp;:hover {
     background: $btn-primary-color;
   }
 }
-]]></css>
-    <data_table>sp_instance</data_table>
-    <demo_data/>
-    <description/>
-    <docs/>
-    <field_list/>
-    <has_preview>false</has_preview>
-    <id>bf_welcome</id>
-    <internal>false</internal>
-    <link>function link(scope, element, attrs, controller) {
-}</link>
-    <name>Bell Flash Welcome</name>
-    <option_schema/>
-    <public>false</public>
-    <roles/>
-    <script><![CDATA[(function() {
+</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>bf_welcome</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+}]]></link>
+        <name>Bell Flash Welcome</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
   data.firstName = '';
   data.greeting = '';
 
@@ -101,8 +98,20 @@
   }
 })();
 ]]></script>
-    <servicenow>false</servicenow>
-    <template><![CDATA[<div class="sp-hero">
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-08-11 11:58:42</sys_created_on>
+        <sys_id>10e332a44c404a8ebeaf4fe4c74370b3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Bell Flash Welcome</sys_name>
+        <sys_package display_value="Bell Flash" source="x_1643968_bell_f_0">2ac1f9cb932acf108b5df14fdd03d6e0</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Bell Flash">2ac1f9cb932acf108b5df14fdd03d6e0</sys_scope>
+        <sys_update_name>sp_widget_10e332a44c404a8ebeaf4fe4c74370b3</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-08-11 11:58:42</sys_updated_on>
+        <template><![CDATA[<div class="sp-hero">
   <div class="sp-hero-inner">
     <div class="sp-hero-text">
       <h1 class="sp-hero-title">{{c.data.greeting}}</h1>
@@ -117,5 +126,5 @@
   </div>
 </div>
 ]]></template>
-  </sp_widget>
+    </sp_widget>
 </record_update>

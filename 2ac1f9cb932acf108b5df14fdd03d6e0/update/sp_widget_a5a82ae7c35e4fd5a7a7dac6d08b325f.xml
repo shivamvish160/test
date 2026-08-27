@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
-  <sp_widget action="INSERT_OR_UPDATE">
-    <sys_id>a5a82ae7c35e4fd5a7a7dac6d08b325f</sys_id>
-    <sys_scope display_value="x_1643968_bell_f_0">2ac1f9cb932acf108b5df14fdd03d6e0</sys_scope>
-    <sys_update_name>sp_widget_a5a82ae7c35e4fd5a7a7dac6d08b325f</sys_update_name>
-    <category>custom</category>
-    <client_script><![CDATA[api.controller = function() {
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller = function() {
   var c = this;
 
   c.activeSection = '';
@@ -96,8 +93,8 @@
   };
 };
 ]]></client_script>
-    <controller_as>c</controller_as>
-    <css><![CDATA[.sp-card {
+        <controller_as>c</controller_as>
+        <css>.sp-card {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -154,12 +151,12 @@
   border: none;
   background: $brand-primary;
   color: $btn-primary-color;
-  &:hover:not(:disabled) {
+  &amp;:hover:not(:disabled) {
     background: $brand-primary-dark;
     box-shadow: 0 2px 8px rgba($brand-primary, 0.3);
     color: $btn-primary-color;
   }
-  &:disabled {
+  &amp;:disabled {
     opacity: 0.55;
     cursor: not-allowed;
   }
@@ -175,7 +172,7 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  &:hover {
+  &amp;:hover {
     background: $background-secondary;
   }
 }
@@ -189,7 +186,7 @@
   background: $background-primary;
   transition: border-color 0.15s, box-shadow 0.15s;
   width: 100%;
-  &:focus {
+  &amp;:focus {
     border-color: $brand-primary;
     box-shadow: 0 0 0 3px rgba($brand-primary, 0.15);
     outline: none;
@@ -203,7 +200,7 @@
   resize: vertical;
   min-height: 100px;
   transition: border-color 0.15s;
-  &:focus {
+  &amp;:focus {
     border-color: $brand-primary;
     box-shadow: 0 0 0 3px rgba($brand-primary, 0.15);
     outline: none;
@@ -245,22 +242,22 @@
 .sp-spin {
   animation: sp-spin 0.8s linear infinite;
 }
-]]></css>
-    <data_table>sp_instance</data_table>
-    <demo_data/>
-    <description/>
-    <docs/>
-    <field_list/>
-    <has_preview>false</has_preview>
-    <id>bf_nnoc_main</id>
-    <internal>false</internal>
-    <link>function link(scope, element, attrs, controller) {
-}</link>
-    <name>Bell Flash NNOC Main</name>
-    <option_schema/>
-    <public>false</public>
-    <roles/>
-    <script><![CDATA[(function() {
+</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>bf_nnoc_main</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+}]]></link>
+        <name>Bell Flash NNOC Main</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
   data.message = '';
   data.success = false;
   data.netsRecord = null;
@@ -325,8 +322,20 @@
   }
 })();
 ]]></script>
-    <servicenow>false</servicenow>
-    <template><![CDATA[<div class="panel panel-default sp-card">
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-08-11 11:58:42</sys_created_on>
+        <sys_id>a5a82ae7c35e4fd5a7a7dac6d08b325f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Bell Flash NNOC Main</sys_name>
+        <sys_package display_value="Bell Flash" source="x_1643968_bell_f_0">2ac1f9cb932acf108b5df14fdd03d6e0</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Bell Flash">2ac1f9cb932acf108b5df14fdd03d6e0</sys_scope>
+        <sys_update_name>sp_widget_a5a82ae7c35e4fd5a7a7dac6d08b325f</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-08-11 11:58:42</sys_updated_on>
+        <template><![CDATA[<div class="panel panel-default sp-card">
   <div class="panel-heading sp-card-header">
     <h3 class="panel-title sp-card-title">
       <span class="glyphicon glyphicon-flash sp-card-icon"></span>
@@ -461,5 +470,5 @@
   </div>
 </div>
 ]]></template>
-  </sp_widget>
+    </sp_widget>
 </record_update>

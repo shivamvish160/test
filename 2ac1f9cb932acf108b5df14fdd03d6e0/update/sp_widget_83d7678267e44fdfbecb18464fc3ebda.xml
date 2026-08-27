@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
-  <sp_widget action="INSERT_OR_UPDATE">
-    <sys_id>83d7678267e44fdfbecb18464fc3ebda</sys_id>
-    <sys_scope display_value="x_1643968_bell_f_0">2ac1f9cb932acf108b5df14fdd03d6e0</sys_scope>
-    <sys_update_name>sp_widget_83d7678267e44fdfbecb18464fc3ebda</sys_update_name>
-    <category>custom</category>
-    <client_script>api.controller = function () {
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller = function () {
     /* widget controller */
     var c = this;
 };
-</client_script>
-    <controller_as>c</controller_as>
-    <css><![CDATA[.sp-card {
+]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.sp-card {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -56,7 +53,7 @@
 .sp-announcement-item {
   padding-bottom: 16px;
   border-bottom: 1px solid $border-tertiary;
-  &:last-child {
+  &amp;:last-child {
     border-bottom: none;
     padding-bottom: 0;
   }
@@ -81,22 +78,22 @@
   margin: 0;
   line-height: 1.5;
 }
-]]></css>
-    <data_table>sp_instance</data_table>
-    <demo_data/>
-    <description/>
-    <docs/>
-    <field_list/>
-    <has_preview>false</has_preview>
-    <id>bf_announcements</id>
-    <internal>false</internal>
-    <link>function link(scope, element, attrs, controller) {
-}</link>
-    <name>Bell Flash Announcements</name>
-    <option_schema/>
-    <public>false</public>
-    <roles/>
-    <script><![CDATA[(function() {
+</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>bf_announcements</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+}]]></link>
+        <name>Bell Flash Announcements</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
   data.announcements = [];
 
   data.announcements.push({
@@ -119,8 +116,20 @@
   });
 })();
 ]]></script>
-    <servicenow>false</servicenow>
-    <template><![CDATA[<div class="panel panel-default sp-card">
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-08-11 11:58:42</sys_created_on>
+        <sys_id>83d7678267e44fdfbecb18464fc3ebda</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Bell Flash Announcements</sys_name>
+        <sys_package display_value="Bell Flash" source="x_1643968_bell_f_0">2ac1f9cb932acf108b5df14fdd03d6e0</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Bell Flash">2ac1f9cb932acf108b5df14fdd03d6e0</sys_scope>
+        <sys_update_name>sp_widget_83d7678267e44fdfbecb18464fc3ebda</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-08-11 11:58:42</sys_updated_on>
+        <template><![CDATA[<div class="panel panel-default sp-card">
   <div class="panel-heading sp-card-header">
     <h3 class="panel-title sp-card-title">
       <span class="glyphicon glyphicon-bullhorn sp-card-icon"></span>
@@ -141,5 +150,5 @@
   </div>
 </div>
 ]]></template>
-  </sp_widget>
+    </sp_widget>
 </record_update>
